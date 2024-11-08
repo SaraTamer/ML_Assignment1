@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ##---------------------------Load the "co2_emissions_data.csv" dataset.------------------------------------
-co2_emissions_data = pandas.read_csv("C:/Users/EGYPT/PycharmProjects/Assignment1/co2_emissions_data.csv")
+co2_emissions_data = pandas.read_csv("co2_emissions_data.csv")
 print(co2_emissions_data)
 
 ## -------------------------------b)  Perform analysis on the dataset to:----------------------:
