@@ -15,20 +15,20 @@ print(co2_emissions_data.isna().sum())
 #  ii) check whether numeric features have the same scale
 print(co2_emissions_data.describe())
 
-# for column in co2_emissions_data.select_dtypes(include=[np.number]):
-#     print(f"{column}: Min = {co2_emissions_data[column].min()}, Max = {co2_emissions_data[column].max()}")
+for column in co2_emissions_data.select_dtypes(include=[np.number]):
+    print(f"{column}: Min = {co2_emissions_data[column].min()}, Max = {co2_emissions_data[column].max()}")
 
 
 
 # iii) visualize a pairplot in which diagonal subplots are histograms
-# sns.pairplot(co2_emissions_data, diag_kind='hist')
-# plt.show()
+sns.pairplot(co2_emissions_data, diag_kind='hist')
+plt.show()
 # #  iv) visualize a correlation heatmap between numeric columns
 #                  # Select only numeric columns
-# numeric_data = co2_emissions_data.select_dtypes(include=[np.number])
+numeric_data = co2_emissions_data.select_dtypes(include=[np.number])
 #               #correlation matrix for the numeric columns.
-# sns.heatmap(numeric_data.corr(), annot=True, cbar=True, )
-# plt.show()
+sns.heatmap(numeric_data.corr(), annot=True, cbar=True, )
+plt.show()
 ##---------------------------c)Preprocess the data such that---------------------------:
 ### don't modify the original dataset
 co2_emissions_data_pre = co2_emissions_data.copy()
@@ -37,7 +37,7 @@ features = co2_emissions_data_pre.drop(columns=['CO2 Emissions(g/km)', 'Emission
 co2_amount = co2_emissions_data_pre['CO2 Emissions(g/km)']  # Target for linear regression
 emission_class = co2_emissions_data_pre['Emission Class']
 # ii) categorical features and targets are encoded
-numeric_data = co2_emissions_data_pre.select_dtypes(include=[np.number])
+
 ### exclude ---> all expcet numeric data
 categorical_data = co2_emissions_data_pre.select_dtypes(exclude=[np.number])
 # iii)the data is shuffled and split into training and testing sets
