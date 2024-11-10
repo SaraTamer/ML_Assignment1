@@ -43,9 +43,11 @@ emission_class = co2_emissions_data_pre['Emission Class']
 # ii) categorical features and targets are encoded
 enc = OrdinalEncoder(categories=[['VERY LOW', 'LOW', 'MODERATE', 'HIGH']])
 # Target is encoded into [0, 1, 2, 3]
-encoded_emission_class = enc.fit_transform(
+encoded_emission_class = co2_emissions_data_pre
+encoded_emission_class[['Emission Class']] = enc.fit_transform(
     co2_emissions_data_pre[['Emission Class']])
 
+print(encoded_emission_class)
 # iii)the data is shuffled and split into training and testing sets
 # split dataset into 80% training, 20% testing
 # for linear regression
