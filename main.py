@@ -2,7 +2,7 @@ import pandas
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import OrdinalEncoder
+from sklearn.preprocessing import OrdinalEncoder,StandardScaler
 from sklearn.model_selection import train_test_split
 
 # ---------------------------Load the "co2_emissions_data.csv" dataset.------------------------------------
@@ -54,5 +54,23 @@ print(encoded_emission_class)
 X_train, X_test, y_train, y_test = train_test_split(
     features, co2_amount, test_size=0.2, random_state=0)
 # iv)numeric features are scaled
+
+# make standardization for data
+
+#get all numeric features  to apply scaling
+numericFeatures = X_train.select_dtypes(include=[np.number]).columns
+Stdscaler = StandardScaler()
+X_train = Stdscaler.fit_transform(X_train[numericFeatures])
+X_test = Stdscaler.transform(X_test[numericFeatures])
+
+#after scaling std=>close to 1 or equal 1, mean =>close to or equal 0
+
+
+print("X_Training data mean:", X_train.mean())
+print("X_Training data std:", X_train.std())
+print("X_Testing data mean:", X_test.mean())
+print("X_Testing data std:", X_test.std())
+
+
 # iii)the data is shuffled and split into training and testing sets
 # iv)numeric features are scaled
