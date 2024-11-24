@@ -121,15 +121,6 @@ def linear_regression_gradient_descent(X_train, y_train, learning_rate, iteratio
     return w1, w2, b, cost_history
 
 
-def prepare_emission(data):
-
-    emission_class = data['Emission Class']
-    y_train, y_test = train_test_split(
-        emission_class, test_size=0.2, random_state=0)
-
-    return y_train, y_test
-
-
 # e) Fit a logistic regression model
 def logistic_regression_gradient_descent(X_train, y_train, X_test, y_test):
     logModel = SGDClassifier(loss='log_loss', random_state=0, max_iter=1000, tol=1e-3)
