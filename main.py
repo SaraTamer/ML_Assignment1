@@ -12,11 +12,6 @@ from sklearn.linear_model import SGDClassifier
 # a) Load dataset
 def load_dataset(filename):
     data = pd.read_csv(filename)
-    print(data.shape)
-    data.info()
-    print("Number of duplicate rows:", data.duplicated().sum())
-    print(data.describe())
-    print(data.describe(include="object"))
     return data
 
 
@@ -60,7 +55,7 @@ def preprocess_data(data):
     data['Transmission'] = data['Transmission'].map(data['Transmission'].value_counts())
 
 
-    # iii) Split data into training and testing sets
+    # iii) Shuffle and split data into training and testing sets - default is shuffle = true
     X_train, X_test, y_train_co2, y_test_co2, y_train_class, y_test_class = train_test_split(
         features, co2_amount, emission_class_encoded, test_size=0.2, random_state=0)
 
